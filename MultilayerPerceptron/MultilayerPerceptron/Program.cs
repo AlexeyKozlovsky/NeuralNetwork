@@ -31,6 +31,36 @@ namespace MultilayerPerceptron
             Console.WriteLine();
             Console.WriteLine("Всё работает!!!");
 
+            Net net1 = new Net(5, 1, 4);
+
+            List<List<double>> inputs = new List<List<double>>()
+            {
+                new List<double>(){1, 1, 0, 0, 1},
+                new List<double>(){0, 1, 1, 0, 1},
+                new List<double>(){1, 1, 1, 0, 1},
+                new List<double>(){0, 0, 0, 0, 0},
+                new List<double>(){0, 1, 0, 0, 1},
+                new List<double>(){1, 1, 1, 0, 0},
+                new List<double>(){0, 1, 0, 0, 0}
+            };
+
+            List<List<double>> outputs = new List<List<double>>()
+            {
+                new List<double>(){0},
+                new List<double>(){1},
+                new List<double>(){1},
+                new List<double>(){0},
+                new List<double>(){0},
+                new List<double>(){1},
+                new List<double>(){0}
+            };
+
+            net1.Learn(inputs, outputs, 0.1, 100000);
+            Console.WriteLine(net1.Return(new List<double>(){1, 1, 1, 1, 1}));
+            Console.WriteLine(net1.Return(new List<double>(){0, 0, 1, 0, 0}));
+            Console.WriteLine(net1.Return(new List<double>(){1, 1, 0, 1, 1}));
+
+
             Console.Read();
         }
 
